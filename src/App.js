@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import './App.css';
+import './style/styles.scss'
 import CalendarList from './components/molecules/CalendarList';
 
-import EventList from './components/molecules/EventList';
 import Navbar from './components/molecules/Navbar';
 import ApiCalendar from './util/ApiCalendar';
 import store from './util/store';
@@ -21,7 +20,7 @@ const App = () => {
   }
 
   const showCalendars = () => {
-    ApiCalendar.listCalendars().then(({result})=>{
+    ApiCalendar.listCalendars().then(({ result }) => {
       console.log(result.items)
     })
   }
@@ -32,7 +31,6 @@ const App = () => {
         console.log(ApiCalendar.sign)
         setAuth(ApiCalendar.sign);
         ApiCalendar.listCalendars().then(({ result }) => {
-          console.log('set calendars')
           setCalendars(result.items)
         })
       })
@@ -51,10 +49,7 @@ const App = () => {
         ) : (
           <>
             <Navbar authed={auth} handleAuthClick={handleAuth} handleSignOutClick={handleSignOut} />
-            <p>
-              TIAG Conference Room Dashboard
-          <CalendarList calendars={calendars} />
-            </p>
+            <CalendarList calendars={calendars} />
           </>
         )}
 

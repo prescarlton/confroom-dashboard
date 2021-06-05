@@ -123,7 +123,7 @@ class ApiCalendar {
      * @param callback
      */
     public onLoad(callback: any): void {
-        if (this.gapi) {
+        if (this.gapi && this.gapi.auth2) {
             callback();
         } else {
             this.onLoadCallback = callback;

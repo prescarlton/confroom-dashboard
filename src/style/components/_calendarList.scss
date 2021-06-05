@@ -1,0 +1,52 @@
+.calendarList__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding:0 5rem;
+    h1 {
+        width:100%;
+
+        font-size:4rem;
+    }
+    .calendarList__list {
+        width:100%;
+        &--noCalendars{
+            @extend .calendarList__list;
+            justify-content: center;
+            &::before{
+                content: "No Calendars Found.";
+                font-weight: bold;
+            }
+        }
+        .calendarList__item {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: .25rem .75rem;
+            width:15rem;
+            height:10rem;
+            margin:.5rem;
+            color:$hint-color;
+            background-color: $dp-1;
+            border-radius: 5px;
+            .roomName {
+                font-weight: bold;
+                font-size:120%;
+                color:$text-color;
+            }
+            .phoneInfo {
+                position: absolute;
+                bottom:.75rem;
+            }
+            &:hover{
+                background-color: $dp-2;
+                cursor:pointer;
+                .roomName{
+                    color:$theme-color;
+                }
+            }
+        }
+    }
+}

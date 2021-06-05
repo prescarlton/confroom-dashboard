@@ -1,4 +1,4 @@
-const clientId = '354392555031-lvrf5ng3n1r84toohmr40g9bjduanatu.apps.googleusercontent.com'
+const clientId = '354392555031-phf7jkioth0o3l4br5aqj3nmig0qhdsl.apps.googleusercontent.com'
 const apiKey = 'AIzaSyDofPd3imRe6TuyO7otDCgB75zw3UwHj8E'
 const scope = "https://www.googleapis.com/auth/calendar"
 const discoveryDocs = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
@@ -32,7 +32,9 @@ class ApiCalendar {
             this.deleteEvent = this.deleteEvent.bind(this);
             this.getEvent = this.getEvent.bind(this);
             this.getBasicUserProfile = this.getBasicUserProfile.bind(this);
+            console.log('entering clientload')
             this.handleClientLoad();
+            console.log('finish clientload')
         } catch (e) {
             console.log(e);
         }
@@ -43,19 +45,16 @@ class ApiCalendar {
      * @param {boolean} isSignedIn
      */
     private updateSigninStatus(isSignedIn: boolean): void {
-        console.log("update this.sign")
         this.sign = isSignedIn;
-        console.log(this.sign)
+        //update redux store with auth)
     }
 
     /**
      * Auth to the google Api.
      */
-    private initClient(): void {
-        console.log('init client')
+    private initClient(): any {
         this.gapi = window['gapi'];
-        this.gapi.client
-            .init(this.config)
+        return this.gapi.client.init(this.config)
             .then(() => {
                 // Listen for sign-in state changes.
                 this.gapi.auth2
@@ -91,12 +90,12 @@ class ApiCalendar {
     /**
      * Sign in Google user account
      */
-    public handleAuthClick(): void {
+    public handleAuthClick(): any {
         if (this.gapi) {
-            this.gapi.auth2.getAuthInstance().signIn();
-            this.updateSigninStatus(this.gapi.auth2.getAuthInstance().isSignedIn.get())
+            return this.gapi.auth2.getAuthInstance().signIn();
         } else {
-            console.log('Error: this.gapi not loaded');
+            console.log("Error: this.gapi not loaded")
+            return Promise.reject(new Error("Error: this.gapi not loaded"));
         }
     }
 
@@ -116,7 +115,6 @@ class ApiCalendar {
         if (this.gapi) {
             this.gapi.auth2.getAuthInstance().isSignedIn.listen(callback);
         } else {
-            console.log('Error: this.gapi not loaded');
         }
     }
 

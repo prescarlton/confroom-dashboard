@@ -1,0 +1,26 @@
+.calendarPage {
+    height: 100vh;
+    display: flex;
+
+    .calendarPage__inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .calendarPage__left {
+        @extend .calendarPage__inner;
+        h1 {
+            font-size:5rem;
+        }
+        h2 {
+            color: $hint-color;
+        }
+    }
+
+    .calendarPage__right {
+        @extend .calendarPage__inner;
+    }
+}

@@ -1,4 +1,5 @@
 import { MouseEventHandler } from "react";
+import { Link } from "react-router-dom";
 
 type NavbarProps = {
     authed: Boolean,
@@ -9,7 +10,7 @@ type NavbarProps = {
 const Navbar = ({ authed, handleAuthClick, handleSignOutClick } : NavbarProps) => {
     return (
         <div className='navbar'>
-            <h3>Conference Room Dashboard</h3>
+            <Link to='/'><h3>Conference Room Dashboard</h3></Link>
             {authed ? (
                 <button className='navbar__authBtn' onClick={handleSignOutClick}>Sign Out</button>
             ) : (

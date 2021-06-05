@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 const CalendarListItem = (props) => {
     console.log(props)
     // create regex to remove room location and conference phone info
@@ -12,11 +13,12 @@ const CalendarListItem = (props) => {
         return confPhoneInfo?.[0];
     }
     return (
-        <div className='calendarList__item'>
-            <p className='roomName'>{roomName}</p>
-            <p className='roomSize'>{roomSize} people</p>
-            <p className='phoneInfo'>{conferencePhoneOptions()}</p>
-        </div>
+        <Link to={`/cal/${props.id}`} className='calendarList__item'>
+                <p className='roomName'>{roomName}</p>
+                <p className='roomSize'>{roomSize} people</p>
+                <p className='phoneInfo'>{conferencePhoneOptions()}</p>
+        </Link>
+
     )
 }
 

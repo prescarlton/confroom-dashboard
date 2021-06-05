@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const clientId = '354392555031-phf7jkioth0o3l4br5aqj3nmig0qhdsl.apps.googleusercontent.com'
 const apiKey = 'AIzaSyDofPd3imRe6TuyO7otDCgB75zw3UwHj8E'
 const scope = "https://www.googleapis.com/auth/calendar"
@@ -170,15 +172,16 @@ class ApiCalendar {
     /**
      * List all events in the calendar queried by custom query options
      * See all available options here https://developers.google.com/calendar/v3/reference/events/list
-     * @param {object} queryOptions to see
      * @param {string} calendarId to see by default use the calendar attribute
      * @returns {any}
      */
-    public listEvents(queryOptions: object, calendarId: string = this.calendar): any {
+    public listEvents(calendarId: string = this.calendar): any {
         if (this.gapi) {
+            console.log('this.gapi loaded',this.gapi)
             return this.gapi.client.calendar.events.list({
                 calendarId,
-                ...queryOptions
+                timeMin: moment().toISOString(),
+                timeMax: moment().endOf('month').toISOString()
             });
         } else {
             console.log('Error: this.gapi not loaded');

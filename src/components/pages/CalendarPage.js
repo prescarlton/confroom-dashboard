@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, withRouter } from 'react-router-dom';
+import { parseRoomInfo } from "../../util";
 import ApiCalendar from "../../util/ApiCalendar";
+import PageTitle from "../atoms/PageTitle";
 import LoadingPage from "./LoadingPage";
 
 const CalendarPage = (props) => {
@@ -12,9 +14,9 @@ const CalendarPage = (props) => {
         try {
             ApiCalendar.setCalendar(id)
             ApiCalendar.listEvents().then(({ result }) => {
-                console.log(result)
+                const {roomName} = parseRoomInfo(result.summary);
                 setloading(false)
-                setTitle(result.summary);
+                setTitle(roomName);
                 setEvents(result.items)
             })
         } catch (e) {
@@ -30,7 +32,7 @@ const CalendarPage = (props) => {
                     <LoadingPage />
                 ) : (
                     <div className='calendarPage'>
-                    <h1>viewing: {title}</h1>
+                    <PageTitle title={title}/>
                         <div className='calendarPage__content'>
                             <div className='calendarPage__left'>
                                 <h1>OPEN</h1>

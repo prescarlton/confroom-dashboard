@@ -18,7 +18,15 @@ body {
 }
 
 .page {
-    padding-top: 10rem;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pageTitle {
+    font-size:4rem;
+    color:$hint-color;
 }
 
 .homepage {

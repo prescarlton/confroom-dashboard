@@ -1,6 +1,9 @@
 .calendarPage {
+    @extend .page;
     height: 100vh;
-    display: flex;
+    .calendarPage__content {
+        display: flex;
+    }
 
     .calendarPage__inner {
         flex: 1;

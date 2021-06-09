@@ -177,11 +177,14 @@ class ApiCalendar {
      */
     public listEvents(calendarId: string = this.calendar): any {
         if (this.gapi) {
-            console.log('this.gapi loaded',this.gapi)
+            console.log('calId',calendarId);
             return this.gapi.client.calendar.events.list({
                 calendarId,
-                timeMin: moment().toISOString(),
-                timeMax: moment().endOf('month').toISOString()
+                timeMin: new Date().toISOString(),
+                showDeleted: false,
+                singleEvents: true,
+                maxResults:10,
+                orderBy: 'startTime'
             });
         } else {
             console.log('Error: this.gapi not loaded');

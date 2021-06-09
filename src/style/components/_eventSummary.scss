@@ -1,0 +1,16 @@
+.eventSummary {
+    width:40%;
+    // padding:.25rem 0;
+    &__title {
+        color: $theme-color;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    & &__time {
+        color: $hint-color;
+    }
+    &:not(:last-of-type) {
+        border-bottom: 1px solid $hint-color;
+        padding-bottom: .5rem;
+    }
+}

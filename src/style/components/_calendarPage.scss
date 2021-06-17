@@ -7,26 +7,41 @@
         flex:1;
     }
     &__inner {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        // justify-content: center;
+        padding:2.5%;
     }
 
     &__left {
-
         @extend .calendarPage__inner;
-        border-right: 1px solid $hint-color;
+        flex:1;
+        // border-right: 1px solid $hint-color;
+
         h1 {
-            font-size:5rem;
+            font-size:8rem;
+            color: $text-color;
         }
         h2 {
             color: $hint-color;
+            font-size:3rem;
         }
     }
 
     &__right {
         @extend .calendarPage__inner;
+        align-items: flex-end;
+        width:30%;
+        justify-content: space-between;
+        text-align: right;
+        .calendarPage__time {
+            font-size:3rem;
+        }
+        &.open {
+            background-color: rgb(126, 251, 126);
+        }
+        &.closed {
+            background-color: rgb(255, 85, 85);
+        }
     }
 }

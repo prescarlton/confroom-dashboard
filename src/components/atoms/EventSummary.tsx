@@ -8,8 +8,8 @@ type EventSummaryProps = {
 
 const EventSummary = ({title, start, end} : EventSummaryProps) => {
 
-    const formatStart = moment(start).format('h:mm')
-    const formatEnd = moment(end).format('h:mm')
+    const formatStart = moment(start).format('h:mm A')
+    const formatEnd = moment(end).format('h:mm A')
 
     return (
         <div className='eventSummary'>

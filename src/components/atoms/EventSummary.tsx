@@ -14,7 +14,7 @@ const EventSummary = ({title, start, end} : EventSummaryProps) => {
     return (
         <div className='eventSummary'>
             <p className='eventSummary__title'>{title}</p>
-            <p className='eventSummary__time'>{formatStart} to {formatEnd}</p>
+            <p className='eventSummary__time hint-color'>{formatStart} to {formatEnd}</p>
         </div>
     )
 }

@@ -40,15 +40,21 @@ const AppRouter = () => {
 
     return (
         <Router>
-            <Navbar authed={auth} handleAuthClick={handleAuth} handleSignOutClick={handleSignOut} />
-            <Switch>
-                <Route path='/' exact>
-                    <HomePage loading={loading} calendars={calendars} />
-                </Route>
-                <Route path='/cal/:id'>
-                    <CalendarPage />
-                </Route>
-            </Switch>
+            {
+                auth ? (
+                    <Switch>
+                        <Route path='/' exact>
+                            <HomePage loading={loading} calendars={calendars} />
+                        </Route>
+                        <Route path='/cal/:id'>
+                            <CalendarPage />
+                        </Route>
+                    </Switch>
+                ) : (
+                    <Navbar authed={auth} handleAuthClick={handleAuth} handleSignOutClick={handleSignOut} />
+                )
+            }
+
         </Router>
     )
 };

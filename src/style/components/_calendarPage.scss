@@ -1,47 +1,97 @@
 .calendarPage {
     @extend .page;
     height: 100vh;
+
     &__content {
         display: flex;
         width: 100%;
-        flex:1;
+        flex: 1;
     }
+
     &__inner {
         display: flex;
         flex-direction: column;
         // justify-content: center;
-        padding:2.5%;
+        padding: 2.5%;
     }
 
     &__left {
         @extend .calendarPage__inner;
-        flex:1;
-        // border-right: 1px solid $hint-color;
+        flex: 1;
+        justify-content: center;
+
+        &__titleWrapper {
+            position: absolute;
+            top: 0;
+            // padding-top: 5%;
+        }
 
         h1 {
-            font-size:8rem;
-            color: $text-color;
-        }
-        h2 {
+            font-size: 7rem;
             color: $hint-color;
-            font-size:3rem;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 10rem;
+        }
+
+        h3 {
+            color: $hint-color;
+            font-size:2rem;
         }
     }
 
     &__right {
         @extend .calendarPage__inner;
-        align-items: flex-end;
-        width:30%;
+        align-items: flex-start;
+        width: 25%;
         justify-content: space-between;
-        text-align: right;
-        .calendarPage__time {
-            font-size:3rem;
+        text-align: left;
+
+        &__upper {
+            h1 {
+                font-size: 4rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: normal;
+                color: $hint-color;
+            }
         }
-        &.open {
-            background-color: rgb(126, 251, 126);
+
+        &__schedule {
+            border-left: 1px solid $hint-color;
+            padding-left: 5%;
+            position: relative;
+
+            &__header {
+                color: $hint-color;
+                position: absolute;
+                top: -2rem;
+                left: -.25rem;
+                text-transform: uppercase;
+            }
         }
-        &.closed {
-            background-color: rgb(255, 85, 85);
+
+        &.green {
+            background-color: rgb(87, 182, 87);
+        }
+
+        &.red {
+            background-color: rgb(182, 87, 87);
+        }
+
+        &.yellow {
+            background-color: rgba(250, 250, 21);
+            .hint-color {
+                color: $dark-hint-color;
+            }
+            color: $dark-body-color;
+            .calendarPage__right__schedule {
+                border-left: 1px solid $dark-hint-color;
+            }
         }
     }
 }

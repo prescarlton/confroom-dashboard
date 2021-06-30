@@ -10,7 +10,6 @@
         color: $hint-color;
     }
     &:not(:last-of-type) {
-        border-bottom: 1px solid $hint-color;
         padding-bottom: .5rem;
     }
 }
